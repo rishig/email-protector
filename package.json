@@ -18,16 +18,25 @@
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
+    "base64url": "^3.0.1",
     "dotenv": "^8.0.0",
     "ejs": "^2.6.2",
     "eslint": "^6.1.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "googleapis": "39",
+    "node": "^12.7.0",
+    "node-fetch": "^2.6.0",
+    "open": "^6.4.0",
+    "parse-email": "^1.0.0",
+    "server-destroy": "^1.0.1"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/express": "^4.17.0",
     "@types/fs-extra": "^8.0.0",
     "@types/node": "^12.6.8",
+    "@types/node-fetch": "^2.5.0",
+    "@types/server-destroy": "^1.0.0",
     "@types/shelljs": "^0.8.5",
     "fs-extra": "^8.1.0",
     "nodemon": "^1.19.1",

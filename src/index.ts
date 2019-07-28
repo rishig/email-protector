@@ -1,17 +1,34 @@
 import express from "express";
 import path from "path";
-const app = express();
-const port = 8080; // default port to listen
 
-// Configure Express to use EJS
+import { finishGoogleAuth, runProtector, startGoogleAuth } from "./googleauth";
+
+// tslint:disable:no-console
+
+const app = express();
+const port = 8080;
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// define a route handler for the default home page
 app.get("/", (req, res) => {
-    // render the index template
     res.render("index");
-} );
+});
+
+app.get("/results", (req, res) => {
+    runProtector().catch((error) => console.log(error));
+    res.render("index", {post_scan: true});
+});
+
+app.get("/gmail/auth", (req, res) => {
+    startGoogleAuth().catch((error) => console.log(error));
+});
+
+app.get("/gmail/authcallback", (req, res) => {
+    finishGoogleAuth(req.query.code)
+       .then(() => res.redirect("/results"))
+       .catch((error) => console.log(error));
+});
 
 // start the express server
 app.listen(port, () => {
